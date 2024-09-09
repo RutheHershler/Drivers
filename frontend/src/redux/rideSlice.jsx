@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import Ride from '../classes/ride'
 import UsePost from './hooks/postHook';
 
 const initialRideState = {
@@ -19,13 +18,11 @@ const rideSlice = createSlice({
                 phoneNumber: rideData.phoneNumber,
             };
             // Make the API call to post the data to the server
-            // const post = UsePost();
-            // post('http://localhost:3000/rides', rideInstance);
+            const post = UsePost();
+            post('http://localhost:8000/ride', rideInstance);
 
             // Save the ride data locally in the state
             state.rides.push(rideInstance);
-            console.log(rideInstance);
-
         },
     },
 });
