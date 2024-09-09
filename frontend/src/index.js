@@ -7,11 +7,13 @@ import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom';
 import { configureStore } from '@reduxjs/toolkit';
 import rideSlice from './redux/rideSlice';
+import driverSlice from './redux/driverSlice';
+
 
 const store = configureStore({
   reducer: {
     rideSlice,
-
+    driverSlice
   }
 })
 

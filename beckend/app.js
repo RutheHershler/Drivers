@@ -16,29 +16,29 @@ app.listen(PORT, () => {
 
 
 
-const { Client } = require('whatsapp-web.js');
-const qrcode = require('qrcode-terminal');
+// const { Client } = require('whatsapp-web.js');
+// const qrcode = require('qrcode-terminal');
 
-const client = new Client();
+// const client = new Client();
 
-// הצגת QR code לסריקה
-client.on('qr', (qr) => {
-    qrcode.generate(qr, { small: true });
-});
+// // הצגת QR code לסריקה
+// client.on('qr', (qr) => {
+//     qrcode.generate(qr, { small: true });
+// });
 
-client.on('ready', () => {
-    console.log('WhatsApp is ready!');
+// client.on('ready', () => {
+//     console.log('WhatsApp is ready!');
     
-    // שליחת הודעה
-    const number = "9720556766460";
-    const message = "היי, זו הודעה מ-Node.js באמצעות whatsapp-web.js";
-    const chatId = `${number}@c.us`;
+//     // שליחת הודעה
+//     const number = "9720556766460";
+//     const message = "היי, זו הודעה מ-Node.js באמצעות whatsapp-web.js";
+//     const chatId = `${number}@c.us`;
 
-    client.sendMessage(chatId, message).then(response => {
-        console.log('Message sent successfully:', response);
-    }).catch(err => {
-        console.error('Error while sending message:', err);
-    });
-});
+//     client.sendMessage(chatId, message).then(response => {
+//         console.log('Message sent successfully:', response);
+//     }).catch(err => {
+//         console.error('Error while sending message:', err);
+//     });
+// });
 
-client.initialize();
+// client.initialize();

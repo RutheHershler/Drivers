@@ -9,6 +9,10 @@ import DialogContent from '@mui/material/DialogContent';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import { TextField } from '@mui/material';
+import { addDriver } from '../../redux/driverSlice';
+import { useDispatch } from 'react-redux';
+
+
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -20,6 +24,8 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 }));
 
 export default function CustomizedDialogs() {
+    const dispatch = useDispatch();
+
     const [open, setOpen] = React.useState(false);
     const [formValues, setFormValues] = React.useState({
         name: '',
@@ -40,7 +46,7 @@ export default function CustomizedDialogs() {
 
     const handleChange = (e) => {
         const { id, value } = e.target;
-        setFormValues({ ...formValues, [id]: value });
+        setFormValues((prevData)=>({ ...prevData, [id]: value }));
     };
 
     const validate = () => {
@@ -74,6 +80,7 @@ export default function CustomizedDialogs() {
         e.preventDefault();
         if (validate()) {
             console.log('Form submitted:', formValues);
+            dispatch(addDriver(formValues));
         }
     };
 
@@ -103,7 +110,6 @@ export default function CustomizedDialogs() {
                     <CloseIcon />
                 </IconButton>
                 <DialogContent dividers>
-                    <form onSubmit={handleSubmit}>
                         <TextField
                             label="שם"
                             id="name"
@@ -152,10 +158,9 @@ export default function CustomizedDialogs() {
                             helperText={errors.numberOfSeats}
                             required
                         />
-                        <Button variant="contained" disableElevation type="submit">
+                        <Button variant="contained" disableElevation onClick={handleSubmit}>
                             שלח למנהל
                         </Button>
-                    </form>
                 </DialogContent>
             </BootstrapDialog>
         </React.Fragment>
