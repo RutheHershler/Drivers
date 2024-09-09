@@ -1,6 +1,4 @@
 import * as React from 'react';
-
-// import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -29,8 +27,9 @@ export default function AddARideForm() {
         // e.preventDefault();
         if (validate()) {
             console.log('Form submitted:', formValues);
+            dispatch(addRide(formValues));
+
         }
-        dispatch(addRide(formValues));
     };
     const validate = () => {
         let formErrors = {};
