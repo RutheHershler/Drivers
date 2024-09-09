@@ -1,6 +1,6 @@
 const accountSid = 'YOUR_TWILIO_ACCOUNT_SID';
 const authToken = 'YOUR_TWILIO_AUTH_TOKEN';
-const client = require('twilio')(accountSid, authToken);   
+const client = require('twilio');(accountSid, authToken);   
 
 
 const sendMessage = async (messageBody, to) => {
