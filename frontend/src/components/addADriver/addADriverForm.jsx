@@ -1,5 +1,3 @@
-
-
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
@@ -12,8 +10,6 @@ import { TextField } from '@mui/material';
 import { addDriver } from '../../redux/driverSlice';
 import { useDispatch } from 'react-redux';
 
-
-
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
         padding: theme.spacing(2),
@@ -25,7 +21,6 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 
 export default function CustomizedDialogs() {
     const dispatch = useDispatch();
-
     const [open, setOpen] = React.useState(false);
     const [formValues, setFormValues] = React.useState({
         name: '',
@@ -46,13 +41,13 @@ export default function CustomizedDialogs() {
 
     const handleChange = (e) => {
         const { id, value } = e.target;
-        setFormValues((prevData)=>({ ...prevData, [id]: value }));
+        setFormValues((prevData) => ({ ...prevData, [id]: value }));
     };
 
     const validate = () => {
         let formErrors = {};
 
-        if (!formValues.name || formValues.name.length<2) {
+        if (!formValues.name || formValues.name.length < 2) {
             formErrors.name = ' וחחיב להיות באורך 2 תווים לפחות! שם הוא שדה חובה';
         }
 
@@ -64,7 +59,7 @@ export default function CustomizedDialogs() {
             formErrors.watsappNumber = 'מספר ווצאפ חייב להיות באורך של 10 ספרות';
         }
 
-        if (!formValues.address|| formValues.name.length<5) {
+        if (!formValues.address || formValues.name.length < 5) {
             formErrors.address = 'כתובת הינה שדה חובה וחייבת לכלול 5 תווים';
         }
 
@@ -79,8 +74,8 @@ export default function CustomizedDialogs() {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (validate()) {
-            console.log('Form submitted:', formValues);
             dispatch(addDriver(formValues));
+            setOpen(false);
         }
     };
 
@@ -110,57 +105,57 @@ export default function CustomizedDialogs() {
                     <CloseIcon />
                 </IconButton>
                 <DialogContent dividers>
-                        <TextField
-                            label="שם"
-                            id="name"
-                            value={formValues.name}
-                            onChange={handleChange}
-                            error={!!errors.name}
-                            helperText={errors.name}
-                            required
-                        />
-                        <TextField
-                            label="מספר טלפון"
-                            id="phoneNumber"
-                            value={formValues.phoneNumber}
-                            onChange={handleChange}
-                            error={!!errors.phoneNumber}
-                            helperText={errors.phoneNumber}
-                            inputProps={{ maxLength: 10 }}
-                            required
-                        />
-                        <TextField
-                            label="מספר ווצאפ"
-                            id="watsappNumber"
-                            value={formValues.watsappNumber}
-                            onChange={handleChange}
-                            error={!!errors.watsappNumber}
-                            helperText={errors.watsappNumber}
-                            inputProps={{ maxLength: 10 }}
-                            required
-                        />
-                        <TextField
-                            label="כתובת"
-                            id="address"
-                            value={formValues.address}
-                            onChange={handleChange}
-                            error={!!errors.address}
-                            helperText={errors.address}
-                            required
-                        />
-                        <TextField
-                            label="מספר מקומות במונית"
-                            id="numberOfSeats"
-                            type="number"
-                            value={formValues.numberOfSeats}
-                            onChange={handleChange}
-                            error={!!errors.numberOfSeats}
-                            helperText={errors.numberOfSeats}
-                            required
-                        />
-                        <Button variant="contained" disableElevation onClick={handleSubmit}>
-                            שלח למנהל
-                        </Button>
+                    <TextField
+                        label="שם"
+                        id="name"
+                        value={formValues.name}
+                        onChange={handleChange}
+                        error={!!errors.name}
+                        helperText={errors.name}
+                        required
+                    />
+                    <TextField
+                        label="מספר טלפון"
+                        id="phoneNumber"
+                        value={formValues.phoneNumber}
+                        onChange={handleChange}
+                        error={!!errors.phoneNumber}
+                        helperText={errors.phoneNumber}
+                        inputProps={{ maxLength: 10 }}
+                        required
+                    />
+                    <TextField
+                        label="מספר ווצאפ"
+                        id="watsappNumber"
+                        value={formValues.watsappNumber}
+                        onChange={handleChange}
+                        error={!!errors.watsappNumber}
+                        helperText={errors.watsappNumber}
+                        inputProps={{ maxLength: 10 }}
+                        required
+                    />
+                    <TextField
+                        label="כתובת"
+                        id="address"
+                        value={formValues.address}
+                        onChange={handleChange}
+                        error={!!errors.address}
+                        helperText={errors.address}
+                        required
+                    />
+                    <TextField
+                        label="מספר מקומות במונית"
+                        id="numberOfSeats"
+                        type="number"
+                        value={formValues.numberOfSeats}
+                        onChange={handleChange}
+                        error={!!errors.numberOfSeats}
+                        helperText={errors.numberOfSeats}
+                        required
+                    />
+                    <Button variant="contained" disableElevation onClick={handleSubmit}>
+                        שלח למנהל
+                    </Button>
                 </DialogContent>
             </BootstrapDialog>
         </React.Fragment>

@@ -9,7 +9,6 @@ import { configureStore } from '@reduxjs/toolkit';
 import rideSlice from './redux/rideSlice';
 import driverSlice from './redux/driverSlice';
 
-
 const store = configureStore({
   reducer: {
     rideSlice,
